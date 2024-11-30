@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>View Event</title>
+
+    <style>
+        /* Custom CSS to center the card */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: white;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .card-subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+        .table th {
+            width: 40%;
+        }
+
+        .table td {
+            font-size: 1.1rem;
+            color: #495057;
+        }
+
+        .table {
+            border: 0;
+        }
+
+        /* Add a custom background image */
+        body {
+            background-image: url("C:/Users/NFA20/Downloads/lands.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Smooth transition for card hover effect */
+        .card:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">View Event</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Event details</h6>
+            <table class="table table-borderless">
+                <tbody>
+                <tr>
+                    <th scope="row">ID</th>
+                    <td th:text="${event.id}">1</td> <!-- Change product to event -->
+                </tr>
+                <tr>
+                    <th scope="row">Name</th>
+                    <td th:text="${event.name}">Event Name</td> <!-- Change product to event -->
+                </tr>
+                <tr>
+                    <th scope="row">Location</th>
+                    <td th:text="${event.location}">Event Location</td> <!-- Change product to event -->
+                </tr>
+                <tr>
+                    <th scope="row">Organizer</th>
+                    <td th:text="${event.organizer}">Event Organizer</td> <!-- Change product to event -->
+                </tr>
+                <tr>
+                    <th scope="row">Date</th>
+                    <td th:text="${event.eventDate}">Event Date</td> <!-- Change product to event -->
+                </tr>
+                <tr>
+                    <th scope="row">Description</th>
+                    <td th:text="${event.description}">Event Description</td> <!-- Change product to event -->
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- Back Button -->
+            <a href="/events" class="btn btn-primary">Back to Event List</a>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript; choose one of the two! -->
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>

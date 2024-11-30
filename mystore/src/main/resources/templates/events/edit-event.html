@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Edit Event</title>
+</head>
+<body>
+<div class="container mt-5">
+  <h1>Edit Event</h1>
+
+  <!-- Form to Edit Event -->
+  <form th:action="@{/events/edit/{id}(id=${eventDto.id})}" th:object="${eventDto}" method="post" onsubmit="return validateForm()">
+
+    <!-- Hidden ID field -->
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- ID Field (Readonly) -->
+    <div class="mb-3">
+      <label for="id" class="form-label">ID</label>
+      <input type="text" th:field="*{id}" class="form-control" id="id" readonly>
+      <div th:if="${#fields.hasErrors('id')}" class="text-danger" th:errors="*{id}">ID Error</div>
+    </div>
+
+    <!-- Name Field (Required) -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter event name" required>
+      <div th:if="${#fields.hasErrors('name')}" class="text-danger" th:errors="*{name}">Name Error</div>
+    </div>
+
+    <!-- Location Field (Required) -->
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" th:field="*{location}" class="form-control" id="location" placeholder="Enter event location" required>
+      <div th:if="${#fields.hasErrors('location')}" class="text-danger" th:errors="*{location}">Location Error</div>
+    </div>
+
+    <!-- Description Field (Required) -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea th:field="*{description}" class="form-control" id="description" rows="3" placeholder="Enter event description" required></textarea>
+      <div th:if="${#fields.hasErrors('description')}" class="text-danger" th:errors="*{description}">Description Error</div>
+    </div>
+
+    <!-- Organizer Field (Required) -->
+    <div class="mb-3">
+      <label for="organizer" class="form-label">Organizer</label>
+      <input type="text" th:field="*{organizer}" class="form-control" id="organizer" placeholder="Enter organizer name" required>
+      <div th:if="${#fields.hasErrors('organizer')}" class="text-danger" th:errors="*{organizer}">Organizer Error</div>
+    </div>
+
+    <!-- Event Date Field (Required) -->
+    <div class="mb-3">
+      <label for="eventDate" class="form-label">Event Date</label>
+      <input type="date" th:field="*{eventDate}" class="form-control" id="eventDate" required>
+      <div th:if="${#fields.hasErrors('eventDate')}" class="text-danger" th:errors="*{eventDate}">Event Date Error</div>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="d-flex justify-content-between">
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Update</button>
+
+      <!-- Back to Events List Button -->
+      <a href="/events" class="btn btn-secondary">Back to Events List</a>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript validation function (for client-side) -->
+<script>
+  function validateForm() {
+    const fields = ['name', 'location', 'description', 'organizer', 'eventDate'];
+    for (let i = 0; i < fields.length; i++) {
+      const field = document.getElementById(fields[i]);
+      if (field.value.trim() === "") {
+        alert("Please fill out the " + field.placeholder);
+        field.focus();
+        return false;
+      }
+    }
+    return true; // Allow form submission if no errors
+  }
+</script>
+</body>
+</html>
